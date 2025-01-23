@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "신청폼";
+}
+
+<h1>@ViewData["title2"]</h1>
+
+<form action="/user/createuser" method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+
+    회사: <input type="text" name="cpyName" value="@Model.CpyName" /><br />
+    직급: <input type="text" name="position" value="@Model.Position" /><br />
+    이름: <input type="text" name="userName" value="@Model.Username" /><br />
+    연령:
+    <label><input type="radio" name="age" value="20" @(Model.Age == 20 ? "checked" : "") /> 20대</label>
+    <label><input type="radio" name="age" value="30" @(Model.Age == 30 ? "checked" : "") /> 30대</label>
+    <label><input type="radio" name="age" value="40" @(Model.Age == 40 ? "checked" : "") /> 40대</label>
+    <label><input type="radio" name="age" value="50" @(Model.Age == 50 ? "checked" : "") /> 50대</label>
+    <input type="submit" name="제출" />
+</form>
+
+<a asp-action="UserList">목록으로</a>
+
+@* @section Styles {
+    <style>
+        body {
+            background-color: #ff0000;
+        }
+    </style>
+} *@

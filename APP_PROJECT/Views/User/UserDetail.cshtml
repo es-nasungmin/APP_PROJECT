@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "신청자상세";
+}
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>순번</th>
+        <td>@Model.Id</td>
+    </tr>
+    <tr>
+        <th>회사명</th>
+        <td>@Model.CpyName</td>
+    </tr>
+    <tr>
+        <th>직급</th>
+        <td>@Model.Position</td>
+    </tr>
+    <tr>
+        <th>이름</th>
+        <td>@Model.Username</td>
+    </tr>
+    <tr>
+        <th>연령</th>
+        <td>@Model.Age</td>
+    </tr>
+</table>
+
+<a asp-action="UserList">목록으로</a>
