@@ -1,4 +1,5 @@
 ﻿using DataAccessLayer.Models;
+using Microsoft.Extensions.Configuration;
 using System.Data.SqlClient;
 
 namespace DataAccessLayer.Mappers
@@ -6,13 +7,20 @@ namespace DataAccessLayer.Mappers
     public class MemberMapper : IMemberMapper
     {
         //Data Source=.;Initial Catalog=MytestDB;Integrated Security=True;Trust Server Certificate=True;
-        private string connectionStrinig = "Data Source=.;Initial Catalog=MytestDB;Integrated Security=True;Connect Timeout=30";
+        //private string connectionStrinig = "Data Source=.;Initial Catalog=MytestDB;Integrated Security=True;Connect Timeout=30";
+
+        private readonly string _connectionString;
+
+        public MemberMapper(IConfiguration configuration)
+        {
+            _connectionString = configuration.GetConnectionString("MyDatabase");
+        }
 
         public async Task<USER> Create(USER user)
         {
             try
             {
-                using (SqlConnection sqlConnection = new SqlConnection(connectionStrinig))
+                using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
                 {
                     await sqlConnection.OpenAsync();
                     SqlCommand sqlCommand = sqlConnection.CreateCommand();
@@ -37,7 +45,7 @@ namespace DataAccessLayer.Mappers
         {
             try
             {
-                using (SqlConnection sqlConnection = new SqlConnection(connectionStrinig))
+                using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
                 {
                     await sqlConnection.OpenAsync();
                     SqlCommand sqlCommand = sqlConnection.CreateCommand();
@@ -75,7 +83,7 @@ namespace DataAccessLayer.Mappers
         {
             try
             {
-                using (SqlConnection sqlConnection = new SqlConnection(connectionStrinig))
+                using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
                 {
                     await sqlConnection.OpenAsync();
                     SqlCommand sqlCommand = sqlConnection.CreateCommand();
@@ -109,7 +117,7 @@ namespace DataAccessLayer.Mappers
         {
             try
             {
-                using (SqlConnection sqlConnection = new SqlConnection(connectionStrinig))
+                using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
                 {
                     await sqlConnection.OpenAsync();
                     SqlCommand sqlCommand = sqlConnection.CreateCommand();
@@ -143,7 +151,7 @@ namespace DataAccessLayer.Mappers
         {
             try
             {
-                using (SqlConnection sqlConnection = new SqlConnection(connectionStrinig))
+                using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
                 {
                     await sqlConnection.OpenAsync();
                     SqlCommand sqlCommand = sqlConnection.CreateCommand();

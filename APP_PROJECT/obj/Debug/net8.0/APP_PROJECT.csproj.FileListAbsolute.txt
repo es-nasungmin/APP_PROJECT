@@ -49,3 +49,4 @@ C:\Users\PC-ESN-D0148\source\repos\APP_PROJECT\APP_PROJECT\bin\Debug\net8.0\Dapp
 C:\Users\PC-ESN-D0148\source\repos\APP_PROJECT\APP_PROJECT\bin\Debug\net8.0\Data\members.json
 C:\Users\PC-ESN-D0148\source\repos\APP_PROJECT\APP_PROJECT\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
 C:\Users\PC-ESN-D0148\source\repos\APP_PROJECT\APP_PROJECT\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+C:\Users\PC-ESN-D0148\source\repos\APP_PROJECT\APP_PROJECT\obj\Debug\net8.0\APP_PROJECT.sourcelink.json

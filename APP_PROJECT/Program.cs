@@ -16,7 +16,7 @@ internal class Program
         builder.Services.AddScoped<IUserService, UserService>(); // dependency injection
 
         // ADO.NET
-        // builder.Services.AddSingleton<IMemberMapper, MemberMapper>(); // dependency injection
+        builder.Services.AddSingleton<IMemberMapper, MemberMapper>(); // dependency injection
 
         // InMemory
         // builder.Services.AddSingleton<IMemberMapper, InMemoryMemberMapper>(); // dependency injection
@@ -30,7 +30,7 @@ internal class Program
         //});
 
         // File ¹æ¹ý 2
-        builder.Services.AddSingleton<IMemberMapper, FileMemberMapper>();
+        // builder.Services.AddSingleton<IMemberMapper, FileMemberMapper>();
 
         // Dapper
         // builder.Services.AddSingleton<IMemberMapper, DapperMemberMapper>(); // dependency injection

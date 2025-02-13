@@ -20,7 +20,7 @@ namespace DataAccessLayer.Mappers
                 var query = @"
                     INSERT INTO MEM_USER (cpyname, position, username, age)
                     OUTPUT INSERTED.ID
-                    VALUES (@CpyName, @Position, @Username, @Age)";
+                    VALUES (@CpyName, @Position, @Use\rname, @Age)";
 
                 // ID를 반환받아 설정
                 user.Id = await connection.ExecuteScalarAsync<int>(query, user);

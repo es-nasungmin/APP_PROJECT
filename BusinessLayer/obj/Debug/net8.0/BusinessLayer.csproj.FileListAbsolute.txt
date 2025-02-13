@@ -13,3 +13,4 @@ C:\Users\PC-ESN-D0148\source\repos\APP_PROJECT\BusinessLayer\obj\Debug\net8.0\Bu
 C:\Users\PC-ESN-D0148\source\repos\APP_PROJECT\BusinessLayer\obj\Debug\net8.0\refint\BusinessLayer.dll
 C:\Users\PC-ESN-D0148\source\repos\APP_PROJECT\BusinessLayer\obj\Debug\net8.0\BusinessLayer.pdb
 C:\Users\PC-ESN-D0148\source\repos\APP_PROJECT\BusinessLayer\obj\Debug\net8.0\ref\BusinessLayer.dll
+C:\Users\PC-ESN-D0148\source\repos\APP_PROJECT\BusinessLayer\obj\Debug\net8.0\BusinessLayer.sourcelink.json
