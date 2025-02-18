@@ -1,6 +1,8 @@
 // 비즈니스 
 using BusinessLayer.Services;
 using DataAccessLayer.Mappers;
+using DataAccessLayer.Models;
+using Microsoft.EntityFrameworkCore;
 
 internal class Program
 {
@@ -8,6 +10,9 @@ internal class Program
     {
         // 빌더객체 생성
         var builder = WebApplication.CreateBuilder(args);
+
+        // SiteInfo 바인딩
+        builder.Services.Configure<SiteInfo>(builder.Configuration.GetSection("SiteInfo"));
 
         // Add services to the container.
         // MVC패턴에서 컨트롤러와 뷰를 사용할 수 있도록 설정
@@ -34,6 +39,13 @@ internal class Program
 
         // Dapper
         // builder.Services.AddSingleton<IMemberMapper, DapperMemberMapper>(); // dependency injection
+
+        // EntityFrameworkCore
+        // 데이터베이스 연결 문자열 가져오기
+        var connectionString = builder.Configuration.GetConnectionString("MyDatabase");
+        // DbContext 등록
+        builder.Services.AddDbContext<ApplicationDbContext>(options =>
+            options.UseSqlServer(connectionString));
 
         // 설정된 빌더를 사용해서 애플리케이션 객체 생성
         var app = builder.Build();

@@ -1,21 +1,29 @@
 ﻿using Dapper;
 using DataAccessLayer.Models;
+using Microsoft.Extensions.Configuration;
 using System.Data.SqlClient;
 
 namespace DataAccessLayer.Mappers
 {
     public class DapperMemberMapper : IMemberMapper
     {
-        private string connectionString = "Data Source=.;Initial Catalog=MytestDB;Integrated Security=True;Connect Timeout=30";
+        //private string connectionString = "Data Source=.;Initial Catalog=MytestDB;Integrated Security=True;Connect Timeout=30";
 
         //public DapperMemberMapper(string connectionString)
         //{
         //    _connectionString = connectionString;
         //}
 
+        private readonly string _connectionString;
+
+        public DapperMemberMapper(IConfiguration configuration)
+        {
+            _connectionString = configuration.GetConnectionString("MyDatabase");
+        }
+
         public async Task<USER> Create(USER user)
         {
-            using (var connection = new SqlConnection(connectionString))
+            using (var connection = new SqlConnection(_connectionString))
             {
                 var query = @"
                     INSERT INTO MEM_USER (cpyname, position, username, age)
@@ -30,7 +38,7 @@ namespace DataAccessLayer.Mappers
 
         public async Task<bool> Delete(int id)
         {
-            using (var connection = new SqlConnection(connectionString))
+            using (var connection = new SqlConnection(_connectionString))
             {
                 var query = "DELETE FROM MEM_USER WHERE id = @Id";
                 var rowsAffected = await connection.ExecuteAsync(query, new { Id = id });
@@ -40,7 +48,7 @@ namespace DataAccessLayer.Mappers
 
         public async Task<List<USER>> GetAll()
         {
-            using (var connection = new SqlConnection(connectionString))
+            using (var connection = new SqlConnection(_connectionString))
             {
                 var query = "SELECT * FROM MEM_USER";
                 var users = await connection.QueryAsync<USER>(query);
@@ -55,7 +63,7 @@ namespace DataAccessLayer.Mappers
                 throw new Exception("ID cannot be null.");
             }
 
-            using (var connection = new SqlConnection(connectionString))
+            using (var connection = new SqlConnection(_connectionString))
             {
                 var query = "SELECT * FROM MEM_USER WHERE id = @Id";
                 var user = await connection.QueryFirstOrDefaultAsync<USER>(query, new { Id = id });
@@ -71,7 +79,7 @@ namespace DataAccessLayer.Mappers
 
         public async Task<USER> Update(USER user)
         {
-            using (var connection = new SqlConnection(connectionString))
+            using (var connection = new SqlConnection(_connectionString))
             {
                 var query = @"
                     UPDATE MEM_USER

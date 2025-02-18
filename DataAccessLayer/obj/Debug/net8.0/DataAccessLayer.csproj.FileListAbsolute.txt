@@ -11,3 +11,5 @@ C:\Users\PC-ESN-D0148\source\repos\APP_PROJECT\DataAccessLayer\obj\Debug\net8.0\
 C:\Users\PC-ESN-D0148\source\repos\APP_PROJECT\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.pdb
 C:\Users\PC-ESN-D0148\source\repos\APP_PROJECT\DataAccessLayer\obj\Debug\net8.0\ref\DataAccessLayer.dll
 C:\Users\PC-ESN-D0148\source\repos\APP_PROJECT\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.sourcelink.json
+C:\Users\PC-ESN-D0148\source\repos\APP_PROJECT\DataAccessLayer\bin\Debug\net8.0\DataAccessLayer.runtimeconfig.json
+C:\Users\PC-ESN-D0148\source\repos\APP_PROJECT\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.genruntimeconfig.cache
