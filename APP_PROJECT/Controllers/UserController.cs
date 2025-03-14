@@ -32,10 +32,19 @@ namespace APP_PROJECT.Controllers
 
         public async Task<IActionResult> UserDetail(int id)
         {
-            var user = await userService.GetUserById(id);
+            try
+            {
+                var user = await userService.GetUserById(id);
+                if (user == null)
+                    return NotFound("User not found");
 
-            // 뷰로 데이터 전달
-            return View(user);
+                return View(user);
+            }
+            catch (Exception ex)
+            {
+                // 로그 기록 후 에러 페이지 반환
+                return StatusCode(500, "Internal Server Error");
+            }
         }
 
         public async Task<IActionResult> NewUser(int id)
@@ -56,7 +65,7 @@ namespace APP_PROJECT.Controllers
             return View(user); // 모델 데이터를 뷰로 전달
         }
 
-        [HttpPost]
+        [HttpDelete]
         public async Task<IActionResult> CreateUser(UserDTO createUserDTO)
         {
             if (createUserDTO.Id == 0) // 등록

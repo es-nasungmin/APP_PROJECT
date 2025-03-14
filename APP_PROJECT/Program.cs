@@ -8,17 +8,17 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        // 빌더객체 생성
+        // 웹 애플리케이션을 생성하는 빌더 객체 생성
         var builder = WebApplication.CreateBuilder(args);
 
-        // SiteInfo 바인딩
+        // appsettings.json의 "SiteInfo" 섹션을 SiteInfo 객체에 바인딩
         builder.Services.Configure<SiteInfo>(builder.Configuration.GetSection("SiteInfo"));
 
-        // Add services to the container.
         // MVC패턴에서 컨트롤러와 뷰를 사용할 수 있도록 설정
         builder.Services.AddControllersWithViews();
+
         // DI 설정 (transient : 매번 새롭게 생성, scopped : 하나의 요청에는 하나의 객체, singleton: 모든 요청에 하나의 객체)
-        builder.Services.AddScoped<IUserService, UserService>(); // dependency injection
+        builder.Services.AddSingleton<IUserService, UserService>(); // dependency injection
 
         // ADO.NET
         builder.Services.AddSingleton<IMemberMapper, MemberMapper>(); // dependency injection
@@ -41,11 +41,11 @@ internal class Program
         // builder.Services.AddSingleton<IMemberMapper, DapperMemberMapper>(); // dependency injection
 
         // EntityFrameworkCore
-        // 데이터베이스 연결 문자열 가져오기
+        // appsettings.json에서 "MyDatabase" 키의 연결 문자열을 가져옴
         var connectionString = builder.Configuration.GetConnectionString("MyDatabase");
-        // DbContext 등록
-        builder.Services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(connectionString));
+
+        // AddDbContext<ApplicationDbContext>: SQL Server를 사용하는 ApplicationDbContext를 등록
+        builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
 
         // 설정된 빌더를 사용해서 애플리케이션 객체 생성
         var app = builder.Build();
